@@ -1,27 +1,30 @@
 #pragma once
 
 class Vector3D {
+private:
+	float x, y, z;
 public:
-	double x, y, z;
+	float get_x() const ;
+	float get_y() const ;
+	float get_z() const ;
 
-	Vector3D(double x, double y, double z);
+	Vector3D(float x, float y, float z);
 	~Vector3D();
-	double find_Magnitude();
+	float find_Magnitude() const;
 
-	Vector3D mult_V3D(float scalar);
-	Vector3D div_V3D(Vector3D v, float scalar);
+	void add_V3D(Vector3D rhs);
+	void sub_V3D(Vector3D rhs);
+	void mult_V3D(float rhs);
+	void div_V3D(float rhs);
 
-	Vector3D unit_V3D();
-	void set_V3D();
+	float dot_Prod_V3D(Vector3D rhs) const;
+	Vector3D cross_Prod_V3D(Vector3D rhs) const;
+	
+	void operator += (Vector3D rhs);
+	void operator -= (Vector3D rhs);
+	float operator *(Vector3D rhs) const;
+	Vector3D operator %(Vector3D rhs) const;
 
+	Vector3D unit_V3D() const;
+	Vector3D unit_Orthoganal_V3D(Vector3D rhs) const;
 };
-
-Vector3D add_V3D(Vector3D vA, Vector3D vB);
-Vector3D sub_V3D(Vector3D vA, Vector3D vB);
-
-double dot_Prod_V3D(Vector3D vA, Vector3D vB);
-//Vector3D operator*(Vector3D va, Vector3D vB);
-double sclr_Prod_V3D(Vector3D vA, Vector3D vB);
-//float operator%(Vector3D vA, Vector3D vB);
-
-Vector3D unit_Orthoganal_V3D(Vector3D vA, Vector3D vB);
