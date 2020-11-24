@@ -106,8 +106,24 @@ int main(void) {
 
 	// PART VII
 	std::cout << "PART VII: 'produce a unit vector (one of magnitude 1) pointing in the same direction as a given vector'" << std::endl;
+	std::cout << "TEST 15: unit_V3D()" << std::endl;
+	vector1 = Vector3D(1, 2, 2);
+	Vector3D vector1Unit = vector1.unit_V3D();
+	float mag = vector1.find_Magnitude();
+	assert(vector1Unit.get_x() == (1 / mag));
+	assert(vector1Unit.get_y() == (2 / mag));
+	assert(vector1Unit.get_z() == (2 / mag));
+	std::cout << "" << std::endl;
 
 	// Part VIII
-	std::cout << "'return a unit vector orthogonal to two given vectors.'" << std::endl;
+	std::cout << "PART VIII :'return a unit vector orthogonal to two given vectors.'" << std::endl;
+	std::cout << "TEST 16: unit_Orthoganal_V3D()" << std::endl;
+	Vector3D vector1UnitOrth = vector1.unit_Orthoganal_V3D(vector4);
+	mag = (vector1.cross_Prod_V3D(vector4)).find_Magnitude();
+	assert(vector1UnitOrth.get_x() == (0 / mag));
+	assert(vector1UnitOrth.get_y() == (5 / mag));
+	assert(vector1UnitOrth.get_z() == (-5 / mag));
+	std::cout << "" << std::endl;
+
 	return 0;
 }

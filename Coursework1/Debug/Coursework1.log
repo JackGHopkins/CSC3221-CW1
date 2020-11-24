@@ -1,5 +1,2 @@
 ﻿  Test.cpp
-  Vector3D.cpp
-  Generating Code...
-H:\CSC3221\Coursework1\Coursework1\Vector3D.cpp(27,21): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
   Coursework1.vcxproj -> H:\CSC3221\Coursework1\Debug\Coursework1.exe
