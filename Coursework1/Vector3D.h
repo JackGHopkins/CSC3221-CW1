@@ -4,27 +4,28 @@ class Vector3D {
 private:
 	float x, y, z;
 public:
-	float get_x() const ;
-	float get_y() const ;
-	float get_z() const ;
+	float getX() const ;
+	float getY() const ;
+	float getZ() const ;
 
 	Vector3D(float x, float y, float z);
-	~Vector3D();
-	float find_Magnitude() const;
+	Vector3D();
 
-	void add_V3D(Vector3D rhs);
-	void sub_V3D(Vector3D rhs);
-	void mult_V3D(float rhs);
-	void div_V3D(float rhs);
+	float findMagnitude() const;
 
-	float dot_Prod_V3D(Vector3D rhs) const;
-	Vector3D cross_Prod_V3D(Vector3D rhs) const;
+	void addV3D(Vector3D rhs);
+	void subV3D(Vector3D rhs);
+	void multV3D(float rhs);
+	void divV3D(float rhs);
+
+	float dotProdV3D(Vector3D rhs) const;
+	Vector3D crossProdV3D(Vector3D rhs) const;
 	
 	void operator += (Vector3D rhs);
 	void operator -= (Vector3D rhs);
 	float operator *(Vector3D rhs) const;
 	Vector3D operator %(Vector3D rhs) const;
 
-	Vector3D unit_V3D() const;
-	Vector3D unit_Orthoganal_V3D(Vector3D rhs) const;
+	Vector3D unitV3D() const;
+	Vector3D unitOrthoganalV3D(Vector3D rhs) const;
 };
