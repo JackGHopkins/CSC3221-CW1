@@ -64,8 +64,6 @@ float Vector3D::dotProdV3D(Vector3D rhs) const {
 		(this->z * rhs.z);
 }
 
-
-
 Vector3D Vector3D::crossProdV3D(Vector3D rhs) const {
 	Vector3D v(
 		(this->y * rhs.z) - (this->z * rhs.y),

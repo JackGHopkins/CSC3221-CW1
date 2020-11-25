@@ -136,10 +136,16 @@ int main(void) {
 	bin.add(4, 4, 4);
 
 	std::cout << "TEST 17: get Coord from Bin" << std::endl;
-	std::cout << bin.getX(3) << std::endl;
-	std::cout << bin.getY(3) << std::endl;
-	std::cout << bin.getZ(3) << std::endl;
-	bin.remove(3);
+	std::cout << bin.getX(3) << "\t" << bin.getY(3) << "\t" << bin.getZ(3) << std::endl;
+	bin.remove(4);
+	std::cout << bin.getX(2) << "\t" << bin.getY(2) << "\t" << bin.getZ(2) << std::endl;
+
+	std::cout << "TEST 18: Copy Constructor" << std::endl;
+	Bin bin2 = Bin(bin);
+	bin2.add(4, 4, 4);
+	bin2.remove(3);
+	std::cout << bin.getX(3) << "\t" << bin.getY(3) << "\t" << bin.getZ(3) << std::endl;
+	std::cout << bin2.getX(3) << "\t" << bin2.getY(3) << "\t" << bin2.getZ(3) << std::endl;
 
 	return 0;
 }
