@@ -16,23 +16,42 @@ Bin::~Bin() {
 Bin::Bin(const Bin& other) {
 	m_Counter = other.m_Counter;
 	m_MaxSize = other.m_MaxSize;
-	Vector3D** array = new Vector3D*[other.m_MaxSize];
+	m_Array = new Vector3D*[other.m_MaxSize];
+	
+	memcpy(m_Array, other.m_Array, sizeof(Vector3D*) * m_MaxSize);
+}
 
-	for (int i = 0; i < other.m_MaxSize; i++) {
-		array[i] = other.m_Array[i];
-	}
+Bin& Bin::operator = (const Bin& other) {
+	if (this == &other)
+		return *this;
+
+	m_Counter = other.m_Counter;
+	m_MaxSize = other.m_MaxSize;
+	m_Array = new Vector3D*[other.m_MaxSize];
+
+	memcpy(m_Array, other.m_Array, sizeof(Vector3D*) * m_MaxSize);
+	return *this;
 }
 
 float Bin::getX(int a) const {
-	return this->m_Array[a]->getX();
+	if (a < this->m_Counter)
+		return this->m_Array[a]->getX();
+	else
+		std::cout << "INVALID ELEMENT: Could not getX()" << std::endl;
 }
 
 float Bin::getY(int a) const {
-	return this->m_Array[a]->getY();
+	if (a < this->m_Counter)
+		return this->m_Array[a]->getY();
+	else
+		std::cout << "INVALID ELEMENT: Could not getY()" << std::endl;
 }
 
 float Bin::getZ(int a) const {
-	return this->m_Array[a]->getZ();
+	if (a < this->m_Counter)
+		return this->m_Array[a]->getZ();
+	else
+		std::cout << "INVALID ELEMENT: Could not getZ()" << std::endl;
 }
 
 Vector3D** Bin::getArray() const {

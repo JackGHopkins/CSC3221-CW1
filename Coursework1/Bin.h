@@ -9,6 +9,7 @@ private:
 public:
 	Bin(int size);
 	~Bin();
+	Bin& operator = (const Bin& other);
 	Bin(const Bin& other);
 	float getX(int a) const;
 	float getY(int a) const;

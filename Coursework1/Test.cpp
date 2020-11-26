@@ -134,18 +134,32 @@ int main(void) {
 	bin.add(2, 2, 2);
 	bin.add(3, 3, 3);
 	bin.add(4, 4, 4);
+	assert(bin.getX(0) == 1);
+	assert(bin.getY(1) == 2);
+	assert(bin.getZ(2) == 3);
+
+	// Test to see if we can get an element that has not been added
+	//assert(bin.getX(5) == NULL);
 
 	std::cout << "TEST 17: get Coord from Bin" << std::endl;
 	std::cout << bin.getX(3) << "\t" << bin.getY(3) << "\t" << bin.getZ(3) << std::endl;
-	bin.remove(4);
+	//bin.remove(4);
 	std::cout << bin.getX(2) << "\t" << bin.getY(2) << "\t" << bin.getZ(2) << std::endl;
 
 	std::cout << "TEST 18: Copy Constructor" << std::endl;
 	Bin bin2 = Bin(bin);
 	bin2.add(4, 4, 4);
 	bin2.remove(3);
-	std::cout << bin.getX(3) << "\t" << bin.getY(3) << "\t" << bin.getZ(3) << std::endl;
-	std::cout << bin2.getX(3) << "\t" << bin2.getY(3) << "\t" << bin2.getZ(3) << std::endl;
+	std::cout << bin.getX(2) << "\t" << bin.getY(2) << "\t" << bin.getZ(3) << std::endl;
+	std::cout << bin2.getX(3) << std::endl;
+	//"\t" << bin2.getY(3) << "\t" << bin2.getZ(3) << std::endl;
+
+	std::cout << "TEST 19: Overloading Assignment Operator" << std::endl;
+	Bin bin3(2);
+	bin3 = bin;
+	std::cout << bin3.getX(2) << "\t" << bin3.getY(2) << "\t" << bin3.getZ(3) << std::endl;
+
+
 
 	return 0;
 }
