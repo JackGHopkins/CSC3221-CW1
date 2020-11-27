@@ -1,6 +1,40 @@
 #include "Vector3D.h"
 #include "math.h"
 
+/*	
+	METHOD DESCRIPTIONS CAN BE FOUND IN Vector3D.h
+
+	<Summary> .cpp file for Class Vector3D. Implements methods:
+		private:	
+			void addV3D(Vector3D rhs);
+			void subV3D(Vector3D rhs);
+			void multV3D(float rhs);
+			void divV3D(float rhs);
+			float dotProdV3D(Vector3D rhs) const;
+			Vector3D crossProdV3D(Vector3D rhs) const;
+
+		public:
+			float getX() const ;
+			float getY() const ;
+			float getZ() const ;
+
+			Vector3D(float x, float y, float z);
+			Vector3D();
+
+			float findMagnitude() const;
+
+			void operator += (Vector3D rhs);
+			void operator -= (Vector3D rhs);
+			void operator * (float rhs);
+			void operator / (float rhs);
+			float operator *(Vector3D rhs) const;
+			Vector3D operator %(Vector3D rhs) const;
+
+			Vector3D unitV3D() const;
+			Vector3D unitOrthoganalV3D(Vector3D rhs) const;
+
+*/
+
 Vector3D::Vector3D(float x, float y, float z) {
 	this->x = x;
 	this->y = y;
@@ -27,7 +61,7 @@ float Vector3D::getZ() const {
 
 float Vector3D::findMagnitude() const {
 	return sqrtf(
-		pow(this->x, 2.0) +
+		pow(this->x, 2.0) +				// Differences in effeciency between pow() and x*x was negligible. Went with pow() for readablitly.
 		pow(this->y, 2.0) +
 		pow(this->z, 2.0)
 	);
@@ -73,12 +107,20 @@ Vector3D Vector3D::crossProdV3D(Vector3D rhs) const {
 	return v;
 }
 
-void Vector3D::operator += (Vector3D rhs) {
+void Vector3D::operator + (Vector3D rhs) {
 	addV3D(rhs);
 }
 
-void Vector3D::operator -= (Vector3D rhs) {
+void Vector3D::operator - (Vector3D rhs) {
 	subV3D(rhs);
+}
+
+void Vector3D::operator * (float rhs) {
+	multV3D(rhs);
+}
+
+void Vector3D::operator / (float rhs) {
+	divV3D(rhs);
 }
 
 float Vector3D::operator * (Vector3D rhs) const {
@@ -97,7 +139,6 @@ Vector3D Vector3D::unitV3D() const {
 		this->y / gradient,
 		this->z / gradient
 	);
-
 	return v;
 }
 

@@ -2,6 +2,23 @@
 #include "Vector3D.h"
 #include <iostream>
 
+/*
+	METHOD DESCRIPTIONS CAN BE FOUND IN Bin.h
+
+	<Summary> .cpp file for Class Bin. Implements methods:
+		Bin(int size); 
+		~Bin();
+		Bin(const Bin& other);
+		Bin& operator = (const Bin& other);
+		float getX(int a) const;
+		float getY(int a) const;
+		float getZ(int a) const;
+		Vector3D** getArray() const;
+		
+		void add(float x, float y, float z);
+		void remove(int b);
+*/
+
 Bin::Bin(int size) {
 	this->m_Counter = 0;
 	this->m_MaxSize = size;
@@ -18,7 +35,7 @@ Bin::Bin(const Bin& other) {
 	m_MaxSize = other.m_MaxSize;
 	m_Array = new Vector3D*[other.m_MaxSize];
 	
-	memcpy(m_Array, other.m_Array, sizeof(Vector3D*) * m_MaxSize);
+	memcpy(m_Array, other.m_Array, sizeof(Vector3D*) * m_MaxSize); 	// used memcopy to be more efficient then a for loop for this task.
 }
 
 Bin& Bin::operator = (const Bin& other) {

@@ -37,13 +37,13 @@ int main(void) {
 	// PART III
 	std::cout << "PART III: 'operators to add, and subtract vectors'" << std::endl;
 	std::cout << "TEST 5: add_V3D()" << std::endl;
-	vector1.addV3D(vector3);
+	vector1 + vector3;
 	assert(vector1.getX() == 3);
 	assert(vector1.getY() == 3);
 	assert(vector1.getZ() == 3);
 
 	std::cout << "TEST 6: sub_V3D()" << std::endl;
-	vector1.subV3D(vector3);
+	vector1 - vector3;
 	assert(vector1.getX() == 1);
 	assert(vector1.getY() == 2);
 	assert(vector1.getZ() == 2);
@@ -53,13 +53,13 @@ int main(void) {
 	// PART IV
 	std::cout << "PART IV: 'operators to multiply and divide a vector by a scalar'" << std::endl;
 	std::cout << "TEST 7: mult_V3D()" << std::endl;
-	vector1.multV3D(2);
+	vector1 * 2;
 	assert(vector1.getX() == 2);
 	assert(vector1.getY() == 4);
 	assert(vector1.getZ() == 4);
 
 	std::cout << "TEST 8: div_V3D()" << std::endl;
-	vector1.divV3D(2);
+	vector1 / 2;
 	assert(vector1.getX() == 1);
 	assert(vector1.getY() == 2);
 	assert(vector1.getZ() == 2);
@@ -69,40 +69,14 @@ int main(void) {
 	// PART V
 	std::cout << "PART V: 'calculate the scalar and vector product of two vectors'" << std::endl;
 	std::cout << "TEST 9: dot_Prod_V3D()" << std::endl;
-	float f1 = vector1.dotProdV3D(vector4);
+	float f1 = vector1 * vector4;
 	assert(f1 == 25);
 
-	std::cout << "TEST 10: dot_Prod_V3D()" << std::endl;
-	Vector3D vector5 = vector1.crossProdV3D(vector4);
+	std::cout << "TEST 10: cross_Prod_V3D()" << std::endl;
+	Vector3D vector5 = vector1 % vector4;
 	assert(vector5.getX() == 0);
 	assert(vector5.getY() == 5);
 	assert(vector5.getZ() == -5);
-	std::cout << "" << std::endl;
-
-
-	// PART VI
-	std::cout << "PART VI: 'overload other operators to allow sensible expressions of vectors to be written (Use operator* for scalar product and operator% for vector product)'" << std::endl;
-	std::cout << "TEST 11: operator += ()" << std::endl;
-	vector1 += vector3;
-	assert(vector1.getX() == 3);
-	assert(vector1.getY() == 3);
-	assert(vector1.getZ() == 3);
-
-	std::cout << "TEST 12: operator -= ()" << std::endl;
-	vector1 -= vector3;
-	assert(vector1.getX() == 1);
-	assert(vector1.getY() == 2);
-	assert(vector1.getZ() == 2);
-	
-	std::cout << "TEST 13: operator * ()" << std::endl;
-	float f2 = vector1 * vector4;
-	assert(f2 == 25);
-
-	std::cout << "TEST 14: operator % ()" << std::endl;
-	Vector3D vector6 = vector1 % vector4;
-	assert(vector6.getX() == 0);
-	assert(vector6.getY() == 5);
-	assert(vector6.getZ() == -5);
 	std::cout << "" << std::endl;
 
 	// PART VII
@@ -120,7 +94,7 @@ int main(void) {
 	std::cout << "PART VIII :'return a unit vector orthogonal to two given vectors.'" << std::endl;
 	std::cout << "TEST 16: unit_Orthoganal_V3D()" << std::endl;
 	Vector3D vector1UnitOrth = vector1.unitOrthoganalV3D(vector4);
-	mag = (vector1.crossProdV3D(vector4)).findMagnitude();
+	mag = (vector1 % vector4).findMagnitude();
 	assert(vector1UnitOrth.getX() == (0 / mag));
 	assert(vector1UnitOrth.getY() == (5 / mag));
 	assert(vector1UnitOrth.getZ() == (-5 / mag));

@@ -1,7 +1,2 @@
-﻿  Bin.cpp
-  Test.cpp
-  Generating Code...
-H:\CSC3221\Coursework1\Coursework1\Bin.cpp(41): warning C4715:  'Bin::getX': not all control paths return a value
-H:\CSC3221\Coursework1\Coursework1\Bin.cpp(55): warning C4715:  'Bin::getZ': not all control paths return a value
-H:\CSC3221\Coursework1\Coursework1\Bin.cpp(48): warning C4715:  'Bin::getY': not all control paths return a value
-  Coursework1.vcxproj -> H:\CSC3221\Coursework1\Debug\Coursework1.exe
+﻿  Test.cpp
+  Coursework1.vcxproj -> C:\Users\Jack\source\repos\CSC3221-CW1\Debug\Coursework1.exe
