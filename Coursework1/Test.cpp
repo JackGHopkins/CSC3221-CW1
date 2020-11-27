@@ -3,21 +3,38 @@
 #include <iostream>
 #include "assert.h"
 
-int main(void) {
+/*
+	<Summary>
+		testVector3D(): Runs tests for each method in the Vector3D Class.
+		testBin(): Runs tests for each method in the Bin Class.
+		main(): Main Function
+*/
+void testVector3D();
+void testBin();
 
+int main(void) {
+	testVector3D();
+	testBin();
+	return 0;
+}
+
+/*
+	TESTING VECTOR3D
+*/
+void testVector3D() {
 	Vector3D vector1(1, 2, 2);
 	Vector3D vector2(-1, 2, 2);
 	Vector3D vector3(2, 1, 1);
 	Vector3D vector4(5, 5, 5);
 
-	// PART I 
+	std::cout << "TESTING VECTOR3D" << std::endl;
+
+	// PART I
 	std::cout << "PART I: 'return an x,y or z  component of a vector'" << std::endl;
 	std::cout << "TEST 1: get_z()" << std::endl;
 	assert(vector1.getX() == 1);
-
 	std::cout << "TEST 2: get_z()" << std::endl;
 	assert(vector1.getY() == 2);
-
 	std::cout << "TEST 3: get_z()" << std::endl;
 	assert(vector1.getZ() == 2);
 	std::cout << "" << std::endl;
@@ -29,9 +46,7 @@ int main(void) {
 	assert(vector1.findMagnitude() == 3);
 	// Testing for negative Magnitude.
 	assert(vector2.findMagnitude() == 3);
-
 	std::cout << "" << std::endl;
-
 
 
 	// PART III
@@ -41,7 +56,6 @@ int main(void) {
 	assert(vector1.getX() == 3);
 	assert(vector1.getY() == 3);
 	assert(vector1.getZ() == 3);
-
 	std::cout << "TEST 6: sub_V3D()" << std::endl;
 	vector1 - vector3;
 	assert(vector1.getX() == 1);
@@ -100,40 +114,58 @@ int main(void) {
 	assert(vector1UnitOrth.getZ() == (-5 / mag));
 	std::cout << "" << std::endl;
 
-	// Part IX
-	std::cout << "PART XI : Bin" << std::endl;
-	std::cout << "TEST 17: Add() to Bin" << std::endl;
-	Bin bin(2);
-	bin.add(1, 1, 1);
+	std::cout << "---- END OF VECTOR3D TESTS ----" << std::endl;
+	std::cout << "" << std::endl;
+
+}
+
+/*
+	TESTING BIN
+*/
+void testBin() {
+
+	Bin bin(2);							// Intialise bin with a m_MaxSize of 2.
+
+	std::cout << "TESTING VECTOR3D" << std::endl;
+
+	std::cout << "TEST 1: add()" << std::endl;
+	bin.add(1, 1, 1);					// Adding Elements to the Array
 	bin.add(2, 2, 2);
-	bin.add(3, 3, 3);
+	bin.add(3, 3, 3);					// Adding Elements to the Array, exceeding its MaxSize. Array should expand and add additional elements.
 	bin.add(4, 4, 4);
-	assert(bin.getX(0) == 1);
+
+	std::cout << "TEST 2:getX(), getY() and getZ()" << std::endl;
+	assert(bin.getX(0) == 1);			// Gets X and elements that have just been added.
 	assert(bin.getY(1) == 2);
 	assert(bin.getZ(2) == 3);
 
-	// Test to see if we can get an element that has not been added
-	//assert(bin.getX(5) == NULL);
+	// Test to see if we can get an element that has not been added.
+	std::cout << "Should Print Out: INVALID ELEMENT: Could not getX()" << std::endl;
+	bin.getX(5);	// Console should print out "INVALID ELEMENT: Could not getX()"
 
-	std::cout << "TEST 17: get Coord from Bin" << std::endl;
-	std::cout << bin.getX(3) << "\t" << bin.getY(3) << "\t" << bin.getZ(3) << std::endl;
-	//bin.remove(4);
-	std::cout << bin.getX(2) << "\t" << bin.getY(2) << "\t" << bin.getZ(2) << std::endl;
+	std::cout << "TEST 3: remove()" << std::endl;
+	assert(bin.getX(2) == 3);	// Asserting x, y and z components before remove()
+	assert(bin.getY(2) == 3);
+	assert(bin.getZ(2) == 3);
+	bin.remove(2);
+	assert(bin.getX(2) == 4);	// Asserting x, y and z components after remove()
+	assert(bin.getY(2) == 4);
+	assert(bin.getZ(2) == 4);
 
-	std::cout << "TEST 18: Copy Constructor" << std::endl;
+	// Test to see if the highest element was moved.
+	std::cout << "Should Print Out: INVALID ELEMENT: Could not getX()" << std::endl;
+	bin.getX(3);	// Console should print out "INVALID ELEMENT: Could not getX()"
+
+
+	std::cout << "TEST 4: Copy Constructor and Assignment Operator" << std::endl;
 	Bin bin2 = Bin(bin);
+	assert(bin.getX(0) == bin2.getX(0));
+	assert(bin.getY(0) == bin2.getY(0));
+	assert(bin.getZ(0) == bin2.getZ(0));
 	bin2.add(4, 4, 4);
-	bin2.remove(3);
-	std::cout << bin.getX(2) << "\t" << bin.getY(2) << "\t" << bin.getZ(3) << std::endl;
-	std::cout << bin2.getX(3) << std::endl;
-	//"\t" << bin2.getY(3) << "\t" << bin2.getZ(3) << std::endl;
+	bin2.remove(0);
+	assert(bin.getX(0) != bin2.getX(0));
+	assert(bin.getY(0) != bin2.getY(0));
+	assert(bin.getZ(0) != bin2.getZ(0));
 
-	std::cout << "TEST 19: Overloading Assignment Operator" << std::endl;
-	Bin bin3(2);
-	bin3 = bin;
-	std::cout << bin3.getX(2) << "\t" << bin3.getY(2) << "\t" << bin3.getZ(3) << std::endl;
-
-
-
-	return 0;
 }
