@@ -112,7 +112,6 @@ void testVector3D() {
 	assert(vector1UnitOrth.getX() == (0 / mag));
 	assert(vector1UnitOrth.getY() == (5 / mag));
 	assert(vector1UnitOrth.getZ() == (-5 / mag));
-	std::cout << "" << std::endl;
 
 	std::cout << "---- END OF VECTOR3D TESTS ----" << std::endl;
 	std::cout << "" << std::endl;
@@ -126,7 +125,7 @@ void testBin() {
 
 	Bin bin(2);							// Intialise bin with a m_MaxSize of 2.
 
-	std::cout << "TESTING VECTOR3D" << std::endl;
+	std::cout << "TESTING BIN" << std::endl;
 
 	std::cout << "TEST 1: add()" << std::endl;
 	bin.add(1, 1, 1);					// Adding Elements to the Array
@@ -168,4 +167,7 @@ void testBin() {
 	assert(bin.getY(0) != bin2.getY(0));
 	assert(bin.getZ(0) != bin2.getZ(0));
 
+
+	std::cout << "---- END OF BIN TESTS ----" << std::endl;
+	std::cout << "" << std::endl;
 }
